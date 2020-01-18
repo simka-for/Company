@@ -55,7 +55,7 @@ public class Company {
     public void getTopSalaryStaff(int count) {
         staff.sort((o1, o2) -> o2.getSalary().compareTo(o1.getSalary()));
 
-        List<Employee> topSalaryStaff = new ArrayList<Employee>();
+        List<Employee> topSalaryStaff = new ArrayList<>();
 
 
         if (count < staff.size()) {
@@ -75,9 +75,9 @@ public class Company {
     }
 
     public void getLowerSalaryStaff(int count) {
-        staff.sort((o1, o2) -> o1.getSalary().compareTo(o2.getSalary()));
+        staff.sort((o1, o2) -> -o2.getSalary().compareTo(o1.getSalary()));
 
-        List<Employee> lowerSalaryStaff = new ArrayList<Employee>();
+        List<Employee> lowerSalaryStaff = new ArrayList<>();
 
         if (count < staff.size()) {
             for (int i = 0; i < count; i++) {
