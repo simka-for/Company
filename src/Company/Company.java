@@ -52,7 +52,7 @@ public class Company {
         return income;
     }
 
-    public List<Employee> getTopSalaryStaff(int count) {
+    public void getTopSalaryStaff(int count) {
         staff.sort(new Comparator<Employee>() {
             @Override
             public int compare(Employee o1, Employee o2) {
@@ -77,11 +77,9 @@ public class Company {
         }else{
             System.out.println("Превышено количество сотрудников!");
         }
-
-        return topSalaryStaff;
     }
 
-    public List<Employee> getLowerSalaryStaff(int count) {
+    public void getLowerSalaryStaff(int count) {
         staff.sort(new Comparator<Employee>() {
             @Override
             public int compare(Employee o1, Employee o2) {
@@ -104,7 +102,6 @@ public class Company {
         }else{
             System.out.println("Превышено количество сотрудников!");
         }
-        return lowerSalaryStaff;
     }
 }
 

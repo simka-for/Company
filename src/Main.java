@@ -12,12 +12,13 @@ public class Main {
         intel.getLowerSalaryStaff(15);
         intel.getTopSalaryStaff(30);
 
+        System.out.println("\nПроизошло сокращение сотрудников!\n");
         for (int i = 0; i <= 135; i++) {
             intel.fireEmployees(i);
         }
 
-        intel.getLowerSalaryStaff(30);
-        intel.getTopSalaryStaff(15);
+        intel.getLowerSalaryStaff(15);
+        intel.getTopSalaryStaff(30);
 
     }
 }
