@@ -19,6 +19,10 @@ public class Company {
         this.income = income;
     }
 
+    public ArrayList<Employee> getStaff() {
+        return staff;
+    }
+
     public void hireEmployees(Employee employee) {              // Найм сотрудника
         staff.add(employee);
     }
@@ -30,7 +34,6 @@ public class Company {
             staff.remove(0);
         }
     }
-
 
     public void hireAll(int operator, int manager, int topManager) {               // Найм списка сотрудников
         for (int newOperator = 1; newOperator <= operator; newOperator++) {
@@ -59,12 +62,20 @@ public class Company {
 
         List<Employee> topSalaryStaff = new ArrayList<Employee>();
 
-        for (int i = 0; i < count; i++) {
-            topSalaryStaff.add(staff.get(i));
+
+        if (count < staff.size()) {
+            for (int i = 0; i < count; i++) {
+                topSalaryStaff.add(staff.get(i));
+            }
         }
-        System.out.println(("СПИСОК САМЫХ ВЫСОКИХ ЗАРПЛАТ:"));
-        for (int i = 0; i < count; i++) {
-            System.out.println((i + 1) + ". " + topSalaryStaff.get(i).getSalary() + " руб.");
+        if (count <= topSalaryStaff.size()) {
+
+            System.out.println(("СПИСОК САМЫХ ВЫСОКИХ ЗАРПЛАТ:"));
+            for (int i = 0; i < count; i++) {
+                System.out.println((i + 1) + ". " + topSalaryStaff.get(i).getSalary() + " руб.");
+            }
+        }else{
+            System.out.println("Превышено количество сотрудников!");
         }
 
         return topSalaryStaff;
@@ -80,12 +91,18 @@ public class Company {
 
         List<Employee> lowerSalaryStaff = new ArrayList<Employee>();
 
-        for (int i = 0; i < count; i++) {
-            lowerSalaryStaff.add(staff.get(i));
+        if (count < staff.size()) {
+            for (int i = 0; i < count; i++) {
+                lowerSalaryStaff.add(staff.get(i));
+            }
         }
-        System.out.println(("СПИСОК САМЫХ НИЗКИХ ЗАРПЛАТ:"));
-        for (int i = 0; i < count; i++) {
-            System.out.println((i + 1) + ". " + lowerSalaryStaff.get(i).getSalary() + " руб.");
+        if( count <= lowerSalaryStaff.size()) {
+            System.out.println(("СПИСОК САМЫХ НИЗКИХ ЗАРПЛАТ:"));
+            for (int i = 0; i < count; i++) {
+                System.out.println((i + 1) + ". " + lowerSalaryStaff.get(i).getSalary() + " руб.");
+            }
+        }else{
+            System.out.println("Превышено количество сотрудников!");
         }
         return lowerSalaryStaff;
     }
