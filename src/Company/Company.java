@@ -31,21 +31,19 @@ public class Company {
         }
     }
 
+
     public void hireAll(int operator, int manager, int topManager) {               // Найм списка сотрудников
         for (int newOperator = 1; newOperator <= operator; newOperator++) {
-            staff.add(new Operator());
+            staff.add(new Operator(this));
         }
         for (int newManager = 1; newManager <= manager; newManager++) {
-            staff.add(new Manager());
+            staff.add(new Manager(this));
         }
         for (int newTopManager = 1; newTopManager <= topManager; newTopManager++) {
             staff.add(new TopManager(this));
         }
     }
 
-    public List<Employee> getStaff() {
-        return staff;
-    }
 
     public long getIncome() {
         return income;
@@ -53,6 +51,7 @@ public class Company {
 
     public List<Employee> getTopSalaryStaff(int count) {
         staff.sort(new Comparator<Employee>() {
+            @Override
             public int compare(Employee o1, Employee o2) {
                 return o2.getSalary().compareTo(o1.getSalary());
             }
@@ -63,12 +62,17 @@ public class Company {
         for (int i = 0; i < count; i++) {
             topSalaryStaff.add(staff.get(i));
         }
+        System.out.println(("СПИСОК САМЫХ ВЫСОКИХ ЗАРПЛАТ:"));
+        for (int i = 0; i < count; i++) {
+            System.out.println((i + 1) + ". " + topSalaryStaff.get(i).getSalary() + " руб.");
+        }
 
         return topSalaryStaff;
     }
 
     public List<Employee> getLowerSalaryStaff(int count) {
         staff.sort(new Comparator<Employee>() {
+            @Override
             public int compare(Employee o1, Employee o2) {
                 return o1.getSalary().compareTo(o2.getSalary());
             }
@@ -79,9 +83,11 @@ public class Company {
         for (int i = 0; i < count; i++) {
             lowerSalaryStaff.add(staff.get(i));
         }
-
+        System.out.println(("СПИСОК САМЫХ НИЗКИХ ЗАРПЛАТ:"));
+        for (int i = 0; i < count; i++) {
+            System.out.println((i + 1) + ". " + lowerSalaryStaff.get(i).getSalary() + " руб.");
+        }
         return lowerSalaryStaff;
     }
-
 }
 
